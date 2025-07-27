@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Clear Search History",
+  "version": "1.0",
+  "description": "Automatically clears browsing/search history every set time.",
+  "permissions": ["browsingData", "storage", "alarms"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
