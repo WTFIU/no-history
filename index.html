@@ -1,87 +1,126 @@
-/* Reset and base */
-* {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>No History - WTIFU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121214;
+      color: #e0e0e0;
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    h1 {
+      color: #5ac8fa;
+      font-size: 2.75rem;
+      margin-bottom: 0.3em;
+      font-weight: 700;
+    }
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 1.5em;
+    }
+    a {
+      color: #4aa1f3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #82caff;
+      text-decoration: underline;
+    }
+    button#theme-toggle {
+      cursor: pointer;
+      background: #2e2f34;
+      color: #e0e0e0;
+      border: none;
+      padding: 0.6rem 1.3rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(42, 132, 255, 0.4);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    button#theme-toggle:hover {
+      background: #4aa1f3;
+      color: #121214;
+      box-shadow: 0 5px 12px rgba(42, 132, 255, 0.7);
+    }
+    #back {
+      display: inline-block;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #999;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    #back:hover {
+      color: #5ac8fa;
+    }
+    @media (max-width: 480px) {
+      body {
+        margin: 1.5rem 1rem;
+        padding: 1rem 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      button#theme-toggle {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>No History</h1>
+  <p>A browser add-on that clears your browser history every *time set by user*</p>
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #121214;
-  color: #e0e0e0;
-  max-width: 700px;
-  margin: 3rem auto;
-  padding: 2rem 1.5rem;
-  line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+  <p><a href="https://github.com/WTFIU/no-history" target="_blank" rel="noopener">View GitHub Repo</a></p>
 
-h1 {
-  color: #5ac8fa;
-  font-size: 2.75rem;
-  margin-bottom: 0.3em;
-  font-weight: 700;
-}
+  <p>
+    <a href="https://github.com/WTFIU/no-history/archive/refs/heads/main.zip" download>
+      ⬇️ Download Latest Source ZIP
+    </a>
+  </p>
 
-p {
-  font-size: 1.15rem;
-  margin-bottom: 1.5em;
-}
+  <button id="theme-toggle">🌓 Toggle Light/Dark Mode</button>
 
-a {
-  color: #4aa1f3;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.25s ease;
-}
+  <a href="https://wtfiu.github.io" id="back">← Back to WTIFU Home</a>
 
-a:hover,
-a:focus {
-  color: #82caff;
-  text-decoration: underline;
-}
+  <script>
+    const btn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
 
-button#theme-toggle {
-  cursor: pointer;
-  background: #2e2f34;
-  color: #e0e0e0;
-  border: none;
-  padding: 0.6rem 1.3rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 3px 8px rgba(42, 132, 255, 0.4);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        document.body.style.backgroundColor = '#f0f0f0';
+        document.body.style.color = '#111';
+        btn.textContent = '🌙 Toggle Dark Mode';
+      } else {
+        document.body.style.backgroundColor = '#121214';
+        document.body.style.color = '#e0e0e0';
+        btn.textContent = '🌓 Toggle Light Mode';
+      }
+      localStorage.setItem('theme', theme);
+    }
 
-button#theme-toggle:hover {
-  background: #4aa1f3;
-  color: #121214;
-  box-shadow: 0 5px 12px rgba(42, 132, 255, 0.7);
-}
+    btn.addEventListener('click', () => {
+      const current = localStorage.getItem('theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
 
-#back {
-  display: inline-block;
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  color: #999;
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-#back:hover {
-  color: #5ac8fa;
-}
-
-@media (max-width: 480px) {
-  body {
-    margin: 1.5rem 1rem;
-    padding: 1rem 1rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  button#theme-toggle {
-    width: 100%;
-  }
-}
+    applyTheme(savedTheme);
+  </script>
+</body>
+</html>
