@@ -25,6 +25,12 @@ A simple Chrome extension that **automatically clears your browsing history** at
 
 ## 🛠 How to Use
 
-1. Download or clone this repo:
+1. Download the file.
+2. Unzip the file.
+3. go to:
    ```bash
-   git clone https://github.com/WTFIU/no-history.git
+   chrome://extensions/
+4. turn on devloper mode.
+5. press "load unpacked"
+6. open "no-history"   
+   
